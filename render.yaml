@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: valorant-match-coach-api
+    runtime: node
+    buildCommand: npm install && npm run build --workspace server
+    startCommand: npm run start --workspace server
+    healthCheckPath: /api/health
+    envVars:
+      - key: MONGODB_URI
+        sync: false
+      - key: HENRIK_API_KEY
+        sync: false
+      - key: GEMINI_MODEL
+        value: gemini-3.8-flash
+      - key: CLIENT_ORIGIN
+        sync: false
